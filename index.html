@@ -1,17 +1,140 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Website Clone WhatsApp Buttons</title>
-    <meta name="description" content="Central Sem Parar - Atendimento ininterrupto 24 horas por dia. Solicite atendimento seguro pelo WhatsApp." />
-    <meta property="og:image" content="https://bolt.new/static/og_default.png" />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:image" content="https://bolt.new/static/og_default.png" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Raela Santana dos Santos - Costura</title>
+
+<style>
+body{
+    font-family: Arial, sans-serif;
+    margin:0;
+    background:#f5f5f5;
+}
+
+header{
+    background:#8e44ad;
+    color:white;
+    padding:30px;
+    text-align:center;
+}
+
+section{
+    padding:40px;
+    max-width:1000px;
+    margin:auto;
+}
+
+h2{
+    color:#8e44ad;
+}
+
+.servicos{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:20px;
+}
+
+.card{
+    background:white;
+    padding:20px;
+    border-radius:10px;
+    box-shadow:0 2px 8px rgba(0,0,0,0.1);
+}
+
+.galeria{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:15px;
+}
+
+.galeria img{
+    width:100%;
+    border-radius:10px;
+}
+
+.contato{
+    background:#8e44ad;
+    color:white;
+    text-align:center;
+    padding:30px;
+    margin-top:30px;
+}
+
+footer{
+    text-align:center;
+    padding:15px;
+    background:#333;
+    color:white;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>Raela Santana dos Santos</h1>
+<p>Serviços de Costura e Ajustes de Tecidos</p>
+</header>
+
+<section>
+<h2>Sobre o Trabalho</h2>
+<p>
+Especialista em costura de tecidos, realizando ajustes, reformas de roupas,
+barras, customizações e pequenos reparos. Trabalho com diversos tipos de tecidos
+como algodão, jeans, malha, seda e tecidos sintéticos.
+</p>
+</section>
+
+<section>
+<h2>Serviços</h2>
+
+<div class="servicos">
+
+<div class="card">
+<h3>Ajuste de Roupas</h3>
+<p>Ajustes de tamanho, cintura, mangas e comprimento.</p>
+</div>
+
+<div class="card">
+<h3>Barras</h3>
+<p>Barras em calças, vestidos e saias com acabamento profissional.</p>
+</div>
+
+<div class="card">
+<h3>Reformas</h3>
+<p>Transformação e customização de peças antigas.</p>
+</div>
+
+<div class="card">
+<h3>Costura em Geral</h3>
+<p>Consertos e criação de peças simples sob encomenda.</p>
+</div>
+
+</div>
+</section>
+
+<section>
+<h2>Tipos de Tecidos</h2>
+
+<div class="galeria">
+<img src="https://images.unsplash.com/photo-1582735689369-4fe89db7114c" alt="tecido colorido">
+<img src="https://images.unsplash.com/photo-1603252109303-2751441dd157" alt="tecido costura">
+<img src="https://images.unsplash.com/photo-1593032465175-481ac7f401a0" alt="tecidos dobrados">
+<img src="https://images.unsplash.com/photo-1616628182506-9c3e1c390f2d" alt="linhas e tecidos">
+</div>
+
+</section>
+
+<div class="contato">
+<h2>Contato</h2>
+<p>Telefone / WhatsApp:</p>
+<h3>📞 11 96745-0723</h3>
+</div>
+
+<footer>
+<p>© 2026 - Raela Santana dos Santos | Serviços de Costura</p>
+</footer>
+
+</body>
 </html>
