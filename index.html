@@ -1,108 +1,548 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import {
+  Zap,
+  Shield,
+  MapPin,
+  Clock,
+  Car,
+  CreditCard,
+  CheckCircle2,
+  Phone,
+  Mail,
+  MessageCircle,
+  ChevronRight,
+  Star,
+  ArrowRight,
+} from "lucide-react";
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+const WHATSAPP_URL = "https://wa.me/5511965157358?text=Olá! Gostaria de saber mais sobre a Tag Sem Parar.";
+const WHATSAPP_PLAN_URL = (plan: string) =>
+  `https://wa.me/5511965157358?text=Olá! Tenho interesse no plano ${plan} da Tag Sem Parar.`;
 
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+const HERO_IMAGE = "https://mgx-backend-cdn.metadl.com/generate/images/1030886/2026-03-15/f4ddd8c0-042e-4b65-9409-3a98069759d1.png";
+const SPEED_IMAGE = "https://mgx-backend-cdn.metadl.com/generate/images/1030886/2026-03-15/6a14e42a-5e52-4d81-8153-b5804c0075e0.png";
+const COVERAGE_IMAGE = "https://mgx-backend-cdn.metadl.com/generate/images/1030886/2026-03-15/0fe97edb-ce5c-464c-ae7c-3341fc236ebf.png";
+const TAG_IMAGE = "https://mgx-backend-cdn.metadl.com/generate/images/1030886/2026-03-15/725ace4d-8576-4dd6-915f-340b017846d5.png";
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-
-    --radius: 0.5rem;
-
-    --sidebar-background: 0 0% 98%;
-
-    --sidebar-foreground: 240 5.3% 26.1%;
-
-    --sidebar-primary: 240 5.9% 10%;
-
-    --sidebar-primary-foreground: 0 0% 98%;
-
-    --sidebar-accent: 240 4.8% 95.9%;
-
-    --sidebar-accent-foreground: 240 5.9% 10%;
-
-    --sidebar-border: 220 13% 91%;
-
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
-
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
-  }
+function WhatsAppIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="currentColor"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z" />
+    </svg>
+  );
 }
 
-@layer base {
-  * {
-    @apply border-border;
-  }
+function WhatsAppButton({
+  children,
+  url = WHATSAPP_URL,
+  variant = "default",
+  size = "default",
+  className = "",
+}: {
+  children: React.ReactNode;
+  url?: string;
+  variant?: "default" | "outline" | "ghost";
+  size?: "default" | "sm" | "lg" | "icon";
+  className?: string;
+}) {
+  return (
+    <a href={url} target="_blank" rel="noopener noreferrer" className="inline-block">
+      <Button
+        variant={variant}
+        size={size}
+        className={`gap-2 ${className}`}
+      >
+        {children}
+      </Button>
+    </a>
+  );
+}
 
-  body {
-    @apply bg-background text-foreground;
-    font-family: 'Inter', sans-serif;
-  }
+/* ─── Hero Section ─── */
+function HeroSection() {
+  return (
+    <section className="relative min-h-screen flex items-center overflow-hidden">
+      <div className="absolute inset-0">
+        <img
+          src={HERO_IMAGE}
+          alt="Rodovia com pedágio eletrônico"
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-r from-[#1A1A2E]/95 via-[#1A1A2E]/80 to-[#1A1A2E]/40" />
+      </div>
 
-  html {
-    scroll-behavior: smooth;
-  }
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="max-w-2xl space-y-8">
+          <Badge className="bg-[#FFD100] text-[#1A1A2E] hover:bg-[#FFD100]/90 text-sm font-semibold px-4 py-1.5">
+            🚗 Tag de Pedágio
+          </Badge>
+
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
+            Passe nos pedágios{" "}
+            <span className="text-[#FFD100]">sem parar</span> e sem filas
+          </h1>
+
+          <p className="text-lg sm:text-xl text-gray-300 leading-relaxed max-w-xl">
+            Adquira sua Tag Sem Parar e tenha mais praticidade no seu dia a dia.
+            Cobertura em todo o Brasil, ativação rápida e atendimento personalizado.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4">
+            <WhatsAppButton
+              className="bg-[#25D366] hover:bg-[#20BD5A] text-white text-lg px-8 py-6 rounded-full shadow-lg shadow-[#25D366]/30 transition-all hover:scale-105"
+              size="lg"
+            >
+              <WhatsAppIcon className="w-6 h-6" />
+              Peça sua Tag Agora
+            </WhatsAppButton>
+
+            <WhatsAppButton
+              variant="outline"
+              className="!bg-transparent !hover:bg-white/10 border-2 border-white/30 text-white text-lg px-8 py-6 rounded-full hover:border-[#FFD100] hover:text-[#FFD100] transition-all"
+              size="lg"
+            >
+              Fale Conosco
+              <ChevronRight className="w-5 h-5" />
+            </WhatsAppButton>
+          </div>
+
+          <div className="flex items-center gap-6 pt-4">
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="w-5 h-5 text-[#25D366]" />
+              <span className="text-gray-300 text-sm">Ativação Imediata</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="w-5 h-5 text-[#25D366]" />
+              <span className="text-gray-300 text-sm">Sem Burocracia</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <CheckCircle2 className="w-5 h-5 text-[#25D366]" />
+              <span className="text-gray-300 text-sm">Cobertura Nacional</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
+        <div className="w-8 h-12 rounded-full border-2 border-white/30 flex items-start justify-center p-2">
+          <div className="w-1.5 h-3 bg-[#FFD100] rounded-full animate-pulse" />
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── Benefits Section ─── */
+const benefits = [
+  {
+    icon: Zap,
+    title: "Passagem Automática",
+    description: "Passe direto nos pedágios sem precisar parar. Economia de tempo em cada viagem.",
+    color: "text-[#FFD100]",
+    bgColor: "bg-[#FFD100]/10",
+  },
+  {
+    icon: MapPin,
+    title: "Cobertura Nacional",
+    description: "Aceito em mais de 100 praças de pedágio em todo o Brasil. Viaje sem preocupações.",
+    color: "text-blue-500",
+    bgColor: "bg-blue-500/10",
+  },
+  {
+    icon: Shield,
+    title: "Segurança Total",
+    description: "Tecnologia de ponta com criptografia avançada. Seus dados sempre protegidos.",
+    color: "text-green-500",
+    bgColor: "bg-green-500/10",
+  },
+  {
+    icon: Clock,
+    title: "Ativação Rápida",
+    description: "Receba e ative sua tag em minutos. Processo simples e sem burocracia.",
+    color: "text-purple-500",
+    bgColor: "bg-purple-500/10",
+  },
+];
+
+function BenefitsSection() {
+  return (
+    <section className="py-20 lg:py-28 bg-white" id="beneficios">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <Badge className="bg-[#FFD100]/10 text-[#1A1A2E] hover:bg-[#FFD100]/20 mb-4">
+            Vantagens
+          </Badge>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1A1A2E] mb-4">
+            Por que escolher a{" "}
+            <span className="text-[#FFD100]">Tag Sem Parar</span>?
+          </h2>
+          <p className="text-gray-500 text-lg">
+            Descubra todas as vantagens de ter sua tag e viaje com mais praticidade e economia.
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {benefits.map((benefit, index) => (
+            <Card
+              key={index}
+              className="group border-0 shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-2 rounded-2xl overflow-hidden"
+            >
+              <CardContent className="p-8 text-center space-y-4">
+                <div
+                  className={`w-16 h-16 ${benefit.bgColor} rounded-2xl flex items-center justify-center mx-auto group-hover:scale-110 transition-transform`}
+                >
+                  <benefit.icon className={`w-8 h-8 ${benefit.color}`} />
+                </div>
+                <h3 className="text-xl font-bold text-[#1A1A2E]">{benefit.title}</h3>
+                <p className="text-gray-500 leading-relaxed">{benefit.description}</p>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
+          <div className="relative rounded-2xl overflow-hidden group h-64">
+            <img src={SPEED_IMAGE} alt="Passagem rápida no pedágio" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A2E]/80 to-transparent flex items-end p-6">
+              <div>
+                <h4 className="text-white font-bold text-lg">Passagem Rápida</h4>
+                <p className="text-gray-300 text-sm">Sem filas, sem demora</p>
+              </div>
+            </div>
+          </div>
+          <div className="relative rounded-2xl overflow-hidden group h-64">
+            <img src={COVERAGE_IMAGE} alt="Cobertura nacional" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A2E]/80 to-transparent flex items-end p-6">
+              <div>
+                <h4 className="text-white font-bold text-lg">Cobertura Nacional</h4>
+                <p className="text-gray-300 text-sm">Em todo o Brasil</p>
+              </div>
+            </div>
+          </div>
+          <div className="relative rounded-2xl overflow-hidden group h-64">
+            <img src={TAG_IMAGE} alt="Tag no para-brisa" className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#1A1A2E]/80 to-transparent flex items-end p-6">
+              <div>
+                <h4 className="text-white font-bold text-lg">Fácil Instalação</h4>
+                <p className="text-gray-300 text-sm">Cole e pronto</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── Plans Section ─── */
+const plans = [
+  {
+    name: "Básico",
+    price: "9,90",
+    period: "/mês",
+    description: "Ideal para quem usa pedágios ocasionalmente",
+    features: ["1 Tag inclusa", "Cobertura em pedágios", "Atendimento por WhatsApp", "Fatura digital"],
+    popular: false,
+    buttonText: "Quero o Básico",
+  },
+  {
+    name: "Plus",
+    price: "14,90",
+    period: "/mês",
+    description: "Para quem viaja com frequência",
+    features: ["1 Tag inclusa", "Pedágios + Estacionamentos", "Atendimento prioritário", "Fatura digital", "Desconto em estacionamentos"],
+    popular: true,
+    buttonText: "Quero o Plus",
+  },
+  {
+    name: "Premium",
+    price: "24,90",
+    period: "/mês",
+    description: "Solução completa para o seu veículo",
+    features: ["2 Tags inclusas", "Pedágios + Estacionamentos + Drive-thru", "Atendimento VIP 24h", "Fatura digital", "Cashback em compras", "Sem taxa de adesão"],
+    popular: false,
+    buttonText: "Quero o Premium",
+  },
+];
+
+function PlansSection() {
+  return (
+    <section className="py-20 lg:py-28 bg-[#F8F9FA]" id="planos">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <Badge className="bg-[#FFD100]/10 text-[#1A1A2E] hover:bg-[#FFD100]/20 mb-4">Planos</Badge>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1A1A2E] mb-4">Escolha o plano ideal para você</h2>
+          <p className="text-gray-500 text-lg">Temos opções para todos os perfis. Escolha o seu e comece a economizar tempo hoje mesmo.</p>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+          {plans.map((plan, index) => (
+            <Card
+              key={index}
+              className={`relative rounded-3xl overflow-hidden transition-all duration-300 hover:-translate-y-2 ${
+                plan.popular ? "border-2 border-[#FFD100] shadow-xl shadow-[#FFD100]/10 scale-105" : "border border-gray-200 shadow-md hover:shadow-xl"
+              }`}
+            >
+              {plan.popular && (
+                <div className="absolute top-0 left-0 right-0 bg-[#FFD100] text-[#1A1A2E] text-center py-2 font-bold text-sm">⭐ MAIS POPULAR</div>
+              )}
+              <CardContent className={`p-8 space-y-6 ${plan.popular ? "pt-14" : ""}`}>
+                <div>
+                  <h3 className="text-2xl font-bold text-[#1A1A2E]">{plan.name}</h3>
+                  <p className="text-gray-500 text-sm mt-1">{plan.description}</p>
+                </div>
+                <div className="flex items-baseline gap-1">
+                  <span className="text-sm text-gray-500">R$</span>
+                  <span className="text-5xl font-extrabold text-[#1A1A2E]">{plan.price}</span>
+                  <span className="text-gray-500">{plan.period}</span>
+                </div>
+                <ul className="space-y-3">
+                  {plan.features.map((feature, fIndex) => (
+                    <li key={fIndex} className="flex items-center gap-3">
+                      <CheckCircle2 className="w-5 h-5 text-[#25D366] flex-shrink-0" />
+                      <span className="text-gray-600">{feature}</span>
+                    </li>
+                  ))}
+                </ul>
+                <WhatsAppButton
+                  url={WHATSAPP_PLAN_URL(plan.name)}
+                  className={`w-full rounded-full py-6 text-base font-semibold transition-all hover:scale-105 ${
+                    plan.popular ? "bg-[#25D366] hover:bg-[#20BD5A] text-white shadow-lg shadow-[#25D366]/30" : "bg-[#1A1A2E] hover:bg-[#2A2A3E] text-white"
+                  }`}
+                  size="lg"
+                >
+                  <WhatsAppIcon className="w-5 h-5" />
+                  {plan.buttonText}
+                </WhatsAppButton>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── How It Works Section ─── */
+const steps = [
+  { number: "01", icon: MessageCircle, title: "Entre em Contato", description: "Fale conosco pelo WhatsApp e escolha seu plano ideal." },
+  { number: "02", icon: CreditCard, title: "Faça o Pagamento", description: "Pague de forma rápida e segura. Aceitamos diversas formas." },
+  { number: "03", icon: Car, title: "Receba sua Tag", description: "Receba sua tag em casa ou retire no ponto mais próximo." },
+  { number: "04", icon: Zap, title: "Comece a Usar", description: "Cole no para-brisa e passe nos pedágios sem parar!" },
+];
+
+function HowItWorksSection() {
+  return (
+    <section className="py-20 lg:py-28 bg-[#1A1A2E]" id="como-funciona">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <Badge className="bg-[#FFD100]/10 text-[#FFD100] hover:bg-[#FFD100]/20 mb-4">Como Funciona</Badge>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-white mb-4">
+            Simples, rápido e <span className="text-[#FFD100]">sem complicação</span>
+          </h2>
+          <p className="text-gray-400 text-lg">Em apenas 4 passos você já está usando sua Tag Sem Parar.</p>
+        </div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+          {steps.map((step, index) => (
+            <div key={index} className="relative group">
+              {index < steps.length - 1 && (
+                <div className="hidden lg:block absolute top-12 left-[60%] w-[80%] h-0.5 bg-gradient-to-r from-[#FFD100]/50 to-[#FFD100]/10" />
+              )}
+              <div className="text-center space-y-4">
+                <div className="relative mx-auto w-24 h-24">
+                  <div className="absolute inset-0 bg-[#FFD100]/10 rounded-2xl rotate-6 group-hover:rotate-12 transition-transform" />
+                  <div className="relative w-full h-full bg-[#FFD100]/5 border border-[#FFD100]/20 rounded-2xl flex items-center justify-center group-hover:border-[#FFD100]/50 transition-colors">
+                    <step.icon className="w-10 h-10 text-[#FFD100]" />
+                  </div>
+                  <span className="absolute -top-3 -right-3 w-8 h-8 bg-[#FFD100] text-[#1A1A2E] rounded-full flex items-center justify-center text-xs font-bold">
+                    {step.number}
+                  </span>
+                </div>
+                <h3 className="text-xl font-bold text-white">{step.title}</h3>
+                <p className="text-gray-400 leading-relaxed">{step.description}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="text-center mt-16">
+          <WhatsAppButton
+            className="bg-[#25D366] hover:bg-[#20BD5A] text-white text-lg px-10 py-6 rounded-full shadow-lg shadow-[#25D366]/30 transition-all hover:scale-105"
+            size="lg"
+          >
+            <WhatsAppIcon className="w-6 h-6" />
+            Começar Agora
+            <ArrowRight className="w-5 h-5" />
+          </WhatsAppButton>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── Testimonials Section ─── */
+const testimonials = [
+  { name: "Carlos Silva", role: "Motorista de aplicativo", text: "Desde que adquiri a Tag Sem Parar, economizo pelo menos 30 minutos por dia nas filas de pedágio. Excelente serviço!", rating: 5 },
+  { name: "Ana Oliveira", role: "Viajante frequente", text: "Uso em todas as minhas viagens. A cobertura é incrível e o atendimento pelo WhatsApp é super rápido.", rating: 5 },
+  { name: "Roberto Santos", role: "Empresário", text: "Coloquei em toda a frota da empresa. O controle de gastos ficou muito mais fácil com a fatura digital.", rating: 5 },
+];
+
+function TestimonialsSection() {
+  return (
+    <section className="py-20 lg:py-28 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <Badge className="bg-[#FFD100]/10 text-[#1A1A2E] hover:bg-[#FFD100]/20 mb-4">Depoimentos</Badge>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-[#1A1A2E] mb-4">O que nossos clientes dizem</h2>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {testimonials.map((testimonial, index) => (
+            <Card key={index} className="border-0 shadow-md hover:shadow-xl transition-all duration-300 rounded-2xl">
+              <CardContent className="p-8 space-y-4">
+                <div className="flex gap-1">
+                  {Array.from({ length: testimonial.rating }).map((_, i) => (
+                    <Star key={i} className="w-5 h-5 fill-[#FFD100] text-[#FFD100]" />
+                  ))}
+                </div>
+                <p className="text-gray-600 leading-relaxed italic">"{testimonial.text}"</p>
+                <div className="pt-4 border-t border-gray-100">
+                  <p className="font-bold text-[#1A1A2E]">{testimonial.name}</p>
+                  <p className="text-gray-500 text-sm">{testimonial.role}</p>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── CTA Section ─── */
+function CTASection() {
+  return (
+    <section className="py-20 bg-gradient-to-r from-[#FFD100] to-[#FFC000]">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
+        <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-[#1A1A2E]">Pronto para acabar com as filas?</h2>
+        <p className="text-[#1A1A2E]/80 text-lg max-w-2xl mx-auto">
+          Peça agora sua Tag Sem Parar pelo WhatsApp e comece a economizar tempo e dinheiro nas suas viagens.
+        </p>
+        <WhatsAppButton
+          className="bg-[#25D366] hover:bg-[#20BD5A] text-white text-xl px-12 py-7 rounded-full shadow-xl shadow-[#25D366]/40 transition-all hover:scale-105"
+          size="lg"
+        >
+          <WhatsAppIcon className="w-7 h-7" />
+          Falar no WhatsApp Agora
+        </WhatsAppButton>
+        <p className="text-[#1A1A2E]/60 text-sm">Atendimento de segunda a sábado, das 8h às 20h</p>
+      </div>
+    </section>
+  );
+}
+
+/* ─── Footer ─── */
+function Footer() {
+  return (
+    <footer className="bg-[#1A1A2E] text-white py-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
+          <div className="space-y-4">
+            <h3 className="text-2xl font-extrabold"><span className="text-[#FFD100]">Sem</span> Parar</h3>
+            <p className="text-gray-400 leading-relaxed">Sua solução completa em tags de pedágio. Praticidade e economia para o seu dia a dia.</p>
+          </div>
+          <div className="space-y-4">
+            <h4 className="text-lg font-bold text-[#FFD100]">Links Rápidos</h4>
+            <ul className="space-y-3">
+              <li><a href="#beneficios" className="text-gray-400 hover:text-[#FFD100] transition-colors">Benefícios</a></li>
+              <li><a href="#planos" className="text-gray-400 hover:text-[#FFD100] transition-colors">Planos</a></li>
+              <li><a href="#como-funciona" className="text-gray-400 hover:text-[#FFD100] transition-colors">Como Funciona</a></li>
+              <li><a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-[#FFD100] transition-colors">Contato</a></li>
+            </ul>
+          </div>
+          <div className="space-y-4">
+            <h4 className="text-lg font-bold text-[#FFD100]">Contato</h4>
+            <div className="space-y-3">
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-gray-400 hover:text-[#25D366] transition-colors">
+                <Phone className="w-5 h-5" />(11) 96515-7358
+              </a>
+              <a href={WHATSAPP_URL} target="_blank" rel="noopener noreferrer" className="flex items-center gap-3 text-gray-400 hover:text-[#25D366] transition-colors">
+                <WhatsAppIcon className="w-5 h-5" />WhatsApp
+              </a>
+              <div className="flex items-center gap-3 text-gray-400">
+                <Mail className="w-5 h-5" />contato@tagsemparar.com.br
+              </div>
+            </div>
+          </div>
+        </div>
+        <div className="border-t border-gray-800 mt-12 pt-8 text-center text-gray-500 text-sm">
+          <p>© 2026 Tag Sem Parar. Todos os direitos reservados.</p>
+        </div>
+      </div>
+    </footer>
+  );
+}
+
+/* ─── Floating WhatsApp Button ─── */
+function FloatingWhatsApp() {
+  return (
+    <a
+      href={WHATSAPP_URL}
+      target="_blank"
+      rel="noopener noreferrer"
+      className="fixed bottom-6 right-6 z-50 w-16 h-16 bg-[#25D366] rounded-full flex items-center justify-center shadow-2xl shadow-[#25D366]/40 hover:scale-110 transition-transform animate-bounce"
+      aria-label="Fale conosco pelo WhatsApp"
+    >
+      <WhatsAppIcon className="w-8 h-8 text-white" />
+    </a>
+  );
+}
+
+/* ─── Navbar ─── */
+function Navbar() {
+  return (
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-[#1A1A2E]/90 backdrop-blur-md border-b border-white/5">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between h-16">
+          <a href="#" className="text-xl font-extrabold text-white">
+            <span className="text-[#FFD100]">Sem</span> Parar
+          </a>
+          <div className="hidden md:flex items-center gap-8">
+            <a href="#beneficios" className="text-gray-300 hover:text-[#FFD100] transition-colors text-sm font-medium">Benefícios</a>
+            <a href="#planos" className="text-gray-300 hover:text-[#FFD100] transition-colors text-sm font-medium">Planos</a>
+            <a href="#como-funciona" className="text-gray-300 hover:text-[#FFD100] transition-colors text-sm font-medium">Como Funciona</a>
+          </div>
+          <WhatsAppButton className="bg-[#25D366] hover:bg-[#20BD5A] text-white rounded-full px-6 shadow-md" size="sm">
+            <WhatsAppIcon className="w-4 h-4" />
+            <span className="hidden sm:inline">WhatsApp</span>
+          </WhatsAppButton>
+        </div>
+      </div>
+    </nav>
+  );
+}
+
+/* ─── Main Page ─── */
+export default function Index() {
+  return (
+    <div className="min-h-screen bg-white">
+      <Navbar />
+      <HeroSection />
+      <BenefitsSection />
+      <PlansSection />
+      <HowItWorksSection />
+      <TestimonialsSection />
+      <CTASection />
+      <Footer />
+      <FloatingWhatsApp />
+    </div>
+  );
 }
