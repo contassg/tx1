@@ -1,20 +1,144 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <link rel="icon" type="image/x-icon" href="%VITE_APP_LOGO_URL%" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Sem Parar - Tag de Pedágio | Peça Já</title>
-    <meta name="description" content="Adquira sua Tag Sem Parar e passe nos pedágios sem filas. Praticidade, economia e cobertura nacional. Peça agora pelo WhatsApp!" />
-    <meta name="author" content="Atoms" />
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Loja Tech USB</title>
 
-    <meta property="og:title" content="%VITE_APP_TITLE%" />
-    <meta property="og:description" content="%VITE_APP_DESCRIPTION%" />
-    <meta property="og:type" content="website" />
-  </head>
+<style>
+body{
+    font-family: Arial;
+    background:#f4f4f4;
+    margin:0;
+}
 
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+header{
+    background:#111;
+    color:white;
+    padding:20px;
+    text-align:center;
+}
+
+.container{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+    gap:20px;
+    padding:20px;
+}
+
+.produto{
+    background:white;
+    padding:15px;
+    border-radius:8px;
+    box-shadow:0 2px 5px rgba(0,0,0,0.2);
+    text-align:center;
+}
+
+.produto h3{
+    margin:10px 0;
+}
+
+.preco{
+    color:green;
+    font-weight:bold;
+}
+
+button{
+    background:#007bff;
+    color:white;
+    border:none;
+    padding:10px;
+    border-radius:5px;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#0056b3;
+}
+
+footer{
+    text-align:center;
+    padding:20px;
+    background:#111;
+    color:white;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+<h1>Loja Tech USB</h1>
+<p>Cabos USB e Componentes de Baterias</p>
+</header>
+
+<div class="container">
+
+<div class="produto">
+<h3>Cabo USB-C 1m Reforçado</h3>
+<p class="preco">R$ 19,90</p>
+<button>Comprar</button>
+</div>
+
+<div class="produto">
+<h3>Cabo Lightning iPhone 2m</h3>
+<p class="preco">R$ 24,90</p>
+<button>Comprar</button>
+</div>
+
+<div class="produto">
+<h3>Cabo Micro USB Turbo</h3>
+<p class="preco">R$ 14,90</p>
+<button>Comprar</button>
+</div>
+
+<div class="produto">
+<h3>Cabo USB 3 em 1</h3>
+<p class="preco">R$ 22,90</p>
+<button>Comprar</button>
+</div>
+
+<div class="produto">
+<h3>Bateria 18650 3000mAh</h3>
+<p class="preco">R$ 18,90</p>
+<button>Comprar</button>
+</div>
+
+<div class="produto">
+<h3>Bateria AA Recarregável</h3>
+<p class="preco">R$ 15,90</p>
+<button>Comprar</button>
+</div>
+
+<div class="produto">
+<h3>Bateria AAA Recarregável</h3>
+<p class="preco">R$ 12,90</p>
+<button>Comprar</button>
+</div>
+
+<div class="produto">
+<h3>Módulo Carregador TP4056</h3>
+<p class="preco">R$ 6,90</p>
+<button>Comprar</button>
+</div>
+
+<div class="produto">
+<h3>Porta Bateria 18650 Duplo</h3>
+<p class="preco">R$ 8,90</p>
+<button>Comprar</button>
+</div>
+
+<div class="produto">
+<h3>BMS Proteção 3S 12V</h3>
+<p class="preco">R$ 9,90</p>
+<button>Comprar</button>
+</div>
+
+</div>
+
+<footer>
+<p>© 2026 Loja Tech USB</p>
+</footer>
+
+</body>
 </html>
