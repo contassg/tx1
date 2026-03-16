@@ -1,144 +1,105 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
+
 <meta charset="UTF-8">
-<title>Loja Tech USB</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Caminho Livre para o Seu Negócio</title>
 
 <style>
+
 body{
-    font-family: Arial;
-    background:#f4f4f4;
-    margin:0;
+margin:0;
+font-family:Arial, Helvetica, sans-serif;
 }
 
-header{
-    background:#111;
-    color:white;
-    padding:20px;
-    text-align:center;
+.hero{
+
+height:100vh;
+
+background:url("banner.jpg") center center/cover no-repeat;
+
+display:flex;
+align-items:center;
+justify-content:center;
+
 }
 
-.container{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
-    gap:20px;
-    padding:20px;
+.overlay{
+
+background:rgba(0,0,0,0.45);
+padding:40px;
+border-radius:10px;
+
+text-align:center;
+color:white;
+
 }
 
-.produto{
-    background:white;
-    padding:15px;
-    border-radius:8px;
-    box-shadow:0 2px 5px rgba(0,0,0,0.2);
-    text-align:center;
+h1{
+
+font-size:45px;
+margin-bottom:20px;
+
 }
 
-.produto h3{
-    margin:10px 0;
+p{
+
+font-size:20px;
+
 }
 
-.preco{
-    color:green;
-    font-weight:bold;
+.botao{
+
+display:inline-block;
+margin-top:25px;
+
+padding:15px 40px;
+
+background:#c30000;
+color:white;
+
+font-size:18px;
+
+border-radius:8px;
+
+text-decoration:none;
+
+transition:0.3s;
+
 }
 
-button{
-    background:#007bff;
-    color:white;
-    border:none;
-    padding:10px;
-    border-radius:5px;
-    cursor:pointer;
+.botao:hover{
+
+background:#8f0000;
+
 }
 
-button:hover{
-    background:#0056b3;
-}
-
-footer{
-    text-align:center;
-    padding:20px;
-    background:#111;
-    color:white;
-}
 </style>
 
 </head>
 
 <body>
 
-<header>
-<h1>Loja Tech USB</h1>
-<p>Cabos USB e Componentes de Baterias</p>
-</header>
+<section class="hero">
 
-<div class="container">
+<div class="overlay">
 
-<div class="produto">
-<h3>Cabo USB-C 1m Reforçado</h3>
-<p class="preco">R$ 19,90</p>
-<button>Comprar</button>
-</div>
+<h1>CAMINHO LIVRE<br>PARA O SEU NEGÓCIO</h1>
 
-<div class="produto">
-<h3>Cabo Lightning iPhone 2m</h3>
-<p class="preco">R$ 24,90</p>
-<button>Comprar</button>
-</div>
+<p>Entre em contato e descubra como acelerar seu negócio.</p>
 
-<div class="produto">
-<h3>Cabo Micro USB Turbo</h3>
-<p class="preco">R$ 14,90</p>
-<button>Comprar</button>
-</div>
+<a class="botao" href="https://wa.me/551965157358" target="_blank">
 
-<div class="produto">
-<h3>Cabo USB 3 em 1</h3>
-<p class="preco">R$ 22,90</p>
-<button>Comprar</button>
-</div>
+FALAR NO WHATSAPP
 
-<div class="produto">
-<h3>Bateria 18650 3000mAh</h3>
-<p class="preco">R$ 18,90</p>
-<button>Comprar</button>
-</div>
-
-<div class="produto">
-<h3>Bateria AA Recarregável</h3>
-<p class="preco">R$ 15,90</p>
-<button>Comprar</button>
-</div>
-
-<div class="produto">
-<h3>Bateria AAA Recarregável</h3>
-<p class="preco">R$ 12,90</p>
-<button>Comprar</button>
-</div>
-
-<div class="produto">
-<h3>Módulo Carregador TP4056</h3>
-<p class="preco">R$ 6,90</p>
-<button>Comprar</button>
-</div>
-
-<div class="produto">
-<h3>Porta Bateria 18650 Duplo</h3>
-<p class="preco">R$ 8,90</p>
-<button>Comprar</button>
-</div>
-
-<div class="produto">
-<h3>BMS Proteção 3S 12V</h3>
-<p class="preco">R$ 9,90</p>
-<button>Comprar</button>
-</div>
+</a>
 
 </div>
 
-<footer>
-<p>© 2026 Loja Tech USB</p>
-</footer>
+</section>
 
 </body>
+
 </html>
